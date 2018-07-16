@@ -1,0 +1,6 @@
+- cache public_posts do
+  %section.container.containerNarrow
+    %h5.center
+      - unless params[:q]
+        = will_paginate public_posts
+  = render partial: 'public_post', collection: public_posts

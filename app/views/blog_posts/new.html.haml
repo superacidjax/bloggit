@@ -1,0 +1,19 @@
+%section.container.containerNarrow
+  %article.blogPost
+    %h2 New Blog Post
+    = form_for blog_post do |f|
+      .formLine
+        = f.label :title
+        = f.text_field :title
+      .formLine
+        = f.label :body
+        = f.text_area :body
+      .formLine
+        = f.label 'Published?'
+        = f.check_box :published
+      .formLine
+        = f.label :tags
+        = f.text_field :tag_list
+      .formLine
+        = f.submit 'Save Blog Post'
+

@@ -1,0 +1,13 @@
+%section.container.containerNarrow
+  %article.blogPost
+    %h1
+      = public_post.title
+    .meta
+      %span by: John Appleseed
+      %span
+        tags:
+        - cache public_post.tags do
+          = render partial: 'shared/tags', collection: public_post.tags, locals: { destination: public_posts_path }
+    %p
+      = simple_format(public_post.body)
+    = render partial: 'shared/comments', locals: { object: public_post }

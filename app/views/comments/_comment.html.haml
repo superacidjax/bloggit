@@ -1,0 +1,15 @@
+- cache comment do
+  %li
+    = comment.body
+    = comment.commenter_email
+
+    - if user_signed_in?
+      = render partial: 'comments/form', locals: { object: comment }
+    - else
+      = link_to 'Sign In', new_user_session_path
+      to comment
+
+    - cache comment.comments do
+      %ul
+        = render comment.comments
+

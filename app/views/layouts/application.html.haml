@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title BdubsBlogScreenerApp
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+      %nav.container
+        %ul.menuLeft
+          %li.current
+            = link_to 'Home', root_path
+          - if user_signed_in?
+            %li
+              = link_to 'Admin', blog_posts_path
+            %li
+              = link_to 'New Post', new_blog_post_path
+        .headerRight
+          .search
+            = form_tag search_public_posts_path, method: 'get' do
+              = text_field_tag :q, params[:q], placeholder: 'Search here!'
+        %ul.menuRight
+          - if user_signed_in?
+            %li
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete
+          - else  
+            %li
+              = link_to 'Sign In', new_user_session_path
+            %li
+              = link_to 'Sign Up', new_user_registration_path
+    = yield

@@ -1,0 +1,12 @@
+%h3
+  Comments
+
+- if user_signed_in?
+  = render partial: 'comments/form', locals: { object: object }
+- else
+  = link_to 'Sign In', new_user_session_path
+  to reply
+
+%ul
+  - cache object.comments do
+    = render object.comments

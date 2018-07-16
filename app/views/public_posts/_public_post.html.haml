@@ -1,0 +1,15 @@
+- cache public_post do
+  %section.container.containerNarrow
+    %article.blogPost
+      %h1
+        = link_to public_post.title, public_post_path(public_post)
+      .meta
+        %span
+          by:
+          = public_post.author.email
+        %span
+          tags:
+          - cache public_post.tags do
+            = render partial: 'shared/tags', collection: public_post.tags, locals: { destination: public_posts_path } 
+      %p
+        = truncate(public_post.body, length: 580) { link_to 'Read More', public_post_path(public_post) }

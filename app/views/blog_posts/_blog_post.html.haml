@@ -1,0 +1,12 @@
+- cache blog_post do
+  %tr
+    %td.col01
+      = link_to blog_post.title, blog_post
+    %td.col02
+      = render partial: 'shared/tags', collection: blog_post.tags, locals: { destination: blog_posts_path }
+    %td.col03
+      = blog_post.comments.count
+    %td.col03
+      = blog_post.published? ? 'Yes' : 'No'
+
+

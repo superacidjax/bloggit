@@ -1,0 +1,10 @@
+.container
+  %h1 My Blog Posts
+  %table
+    %tr
+      %th.col01 Post
+      %th.col02 Tags
+      %th.col03 Comments
+      %th.col03 Published?
+      - cache blog_posts do
+        = render blog_posts
